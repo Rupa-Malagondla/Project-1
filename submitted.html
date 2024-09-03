@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submission Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        h1 {
+            color: green;
+        }
+        p {
+            margin: 5px 0;
+        }
+        .back-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Submission Successful!</h1>
+    <p>Thank you for submitting your job application. Here is the data you provided:</p>
+    <input type="button" value="Back" class="back-btn" onclick="goBack()">
+    
+    <div id="submittedData"></div>
+
+    <script>
+        function displaySubmittedData() {
+            const params = new URLSearchParams(window.location.search);
+            const dataDiv = document.getElementById('submittedData');
+
+            for (const [key, value] of params.entries()) {
+                const paragraph = document.createElement('p');
+                paragraph.textContent = `${key}: ${value}`;
+                dataDiv.appendChild(paragraph);
+            }
+        }
+
+        function goBack() {
+            // Instead of using history.back(), redirect to file1.html with a forced reload
+            window.location.href = "file1.html";
+        }
+
+        displaySubmittedData();
+    </script>
+</body>
+</html>
